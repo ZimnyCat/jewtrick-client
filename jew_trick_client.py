@@ -3,7 +3,6 @@ from mcstatus import MinecraftServer
 import requests
 
 requests_counter = 0
-tbtt = MinecraftServer.lookup("2b2t.org")
 
 print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
@@ -24,9 +23,13 @@ while True:
         if jew_int == 2:
             request_delay = 2
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
-            online = tbtt.status().players.online
-            print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online, "(" + str(requests_counter) + ")")
-            print("Запрос на 2b2t отправлен. Онлайн:", online)
+            try:
+                online = MinecraftServer.lookup("2b2t.org").status().players.online
+                result = "Полученный онлайн:", online
+            except:
+                result = "Не удалось получить онлайн 2b2t. Не заходите."
+            print("JEW TRICK TIME!!! Онлайн 2b2t (с сервера jew trick):", jew_online, "(" + str(requests_counter) + ")")
+            print("Запрос на 2b2t отправлен.", result)
         elif jew_int == 1:
             print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 0:

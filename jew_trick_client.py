@@ -8,10 +8,10 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v1.3-beta")
+print("jew trick (client) v1.4-beta")
 print("https://jewtrick.ml")
 print("")
-motd = requests.get("https://jewtrick.ml/server/motdv11.html")
+motd = requests.get("https://jewtrick.ml/server/motdv13.html")
 if motd.status_code == 200:
     print(motd.text)
 print("")
@@ -25,11 +25,9 @@ while True:
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
             try:
                 online = MinecraftServer.lookup("2b2t.org").status().players.online
-                result = "Полученный онлайн:", online
+                print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос)", online, "(" + str(requests_counter) + ")")
             except:
-                result = "Не удалось получить онлайн 2b2t. Не заходите."
-            print("JEW TRICK TIME!!! Онлайн 2b2t (с сервера jew trick):", jew_online, "(" + str(requests_counter) + ")")
-            print("Запрос на 2b2t отправлен.", result)
+                print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 1:
             print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 0:

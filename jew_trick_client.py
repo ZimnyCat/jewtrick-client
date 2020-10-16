@@ -1,6 +1,7 @@
 from time import sleep
 from mcstatus import MinecraftServer
 import requests
+import pyautogui
 
 requests_counter = 0
 
@@ -8,13 +9,22 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v1.4-beta")
+print("jew trick (client) v2.0-beta")
 print("https://jewtrick.ml")
 print("")
 motd = requests.get("https://jewtrick.ml/server/motdv13.html")
 if motd.status_code == 200:
     print(motd.text)
 print("")
+print("Включить AutoClick?")
+print("Эта функция сделает двойной клик мышкой, когда придёт время заходить на 2b2t.\nВы можете просто навести курсор мыши на 2b2t в списке серверов и ждать.")
+while True:
+    print("Напишите 'да' или 'нет'")
+    response = input()
+    if response != "да" and response != "нет":
+        print("нет")
+    else:
+        break
 while True:
     request_delay = 1
     requests_counter = requests_counter + 1
@@ -25,7 +35,9 @@ while True:
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
             try:
                 online = MinecraftServer.lookup("2b2t.org").status().players.online
-                print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос)", online, "(" + str(requests_counter) + ")")
+                print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):", online, "(" + str(requests_counter) + ")")
+                if response == "да":
+                    pyautogui.doubleClick(button="left")
             except:
                 print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 1:

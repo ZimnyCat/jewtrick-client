@@ -11,6 +11,6 @@ jew trick для 2b2t!
 
 4. Установите Python на https://www.python.org/downloads/
 
-3. Установите модули requests и mcstatus через команду pip install <модуль>
+3. Установите модули requests, mcstatus и pyautogui через команду pip install <модуль>
 
 4. Запустите, всё должно работать

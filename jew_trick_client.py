@@ -4,25 +4,24 @@ import requests
 import pyautogui
 
 requests_counter = 0
+clicked = 0
 
 print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.0-beta")
-print("https://jewtrick.ml")
+print("jew trick (client) v2.0-beta\nhttps://jewtrick.ml")
 print("")
 motd = requests.get("https://jewtrick.ml/server/motdv13.html")
 if motd.status_code == 200:
     print(motd.text)
 print("")
 print("Включить AutoClick?")
-print("Эта функция сделает двойной клик мышкой, когда придёт время заходить на 2b2t.\nВы можете просто навести курсор мыши на 2b2t в списке серверов и ждать.")
+print("Эта функция сделает двойной клик мышкой, когда придёт время заходить на 2b2t.\nВы можете просто навести курсор мыши на 2b2t в списке серверов и ждать.\nНапишите 'да' или 'нет'")
 while True:
-    print("Напишите 'да' или 'нет'")
     response = input()
     if response != "да" and response != "нет":
-        print("нет")
+        print("Напишите 'да' или 'нет'")
     else:
         break
 while True:
@@ -36,12 +35,14 @@ while True:
             try:
                 online = MinecraftServer.lookup("2b2t.org").status().players.online
                 print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):", online, "(" + str(requests_counter) + ")")
-                if response == "да":
+                if response == "да" and clicked == 0:
                     pyautogui.doubleClick(button="left")
+                clicked = 1
             except:
                 print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 1:
             print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
+            clicked = 0
         elif jew_int == 0:
             print("2b2t не отвечает (" + str(requests_counter) + ")")
     except:

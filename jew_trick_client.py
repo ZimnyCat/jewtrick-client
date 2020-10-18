@@ -10,9 +10,9 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.0-beta\nhttps://jewtrick.ml")
+print("jew trick (client) v2.0\nhttps://jewtrick.ml")
 print("")
-motd = requests.get("https://jewtrick.ml/server/motdv13.html")
+motd = requests.get("https://jewtrick.ml/server/motdv20.html")
 if motd.status_code == 200:
     print(motd.text)
 print("")
@@ -37,7 +37,7 @@ while True:
                 print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):", online, "(" + str(requests_counter) + ")")
                 if response == "да" and clicked == 0:
                     pyautogui.doubleClick(button="left")
-                clicked = 1
+                    clicked = 1
             except:
                 print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 1:

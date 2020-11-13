@@ -1,16 +1,15 @@
 from time import sleep
-from mcstatus import MinecraftServer
 import requests
 import pyautogui
 
 requests_counter = 0
-clicked = 0
+clicked = False
 
 print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.0\nhttps://jewtrick.ml")
+print("jew trick (client) v2.1-beta\nhttps://jewtrick.ml")
 print("")
 motd = requests.get("https://jewtrick.ml/server/motdv20.html")
 if motd.status_code == 200:
@@ -32,17 +31,13 @@ while True:
         if jew_int == 2:
             request_delay = 2
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
-            try:
-                online = MinecraftServer.lookup("2b2t.org").status().players.online
-                print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):", online, "(" + str(requests_counter) + ")")
-                if response == "да" and clicked == 0:
-                    pyautogui.doubleClick(button="left")
-                    clicked = 1
-            except:
-                print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
+            print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
+            if response == "да" and clicked == False:
+                pyautogui.doubleClick(button="left")
+                clicked = True
         elif jew_int == 1:
             print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
-            clicked = 0
+            clicked = False
         elif jew_int == 0:
             print("2b2t не отвечает (" + str(requests_counter) + ")")
     except:

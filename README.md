@@ -1,5 +1,4 @@
 # JEW TRICK
-### макакамастер опять пофиксил jew trick. если вы нашли обход, пожалуйста, напишите способ обхода в [Issues](https://github.com/ZimnyCat/jewtrick-client/issues/new)
 Пропуск очереди 2b2t после рестарта
 
 ## Установка и запуск

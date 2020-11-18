@@ -1,4 +1,5 @@
 from time import sleep
+from mcstatus import MinecraftServer
 import requests
 import pyautogui
 
@@ -15,7 +16,7 @@ def getSetting(settingName):
                 return getValue(word.lower(), settingName)
         global val
         print("[ОШИБКА] Не удалось найти значение \"" + settingName + "\"! Создаём...")
-        if(settingName == "request-delay"):
+        if(settingName == "request-delay" or settingName == "ping"):
             file.write(settingName + " = true\n")
             val = True
         else:
@@ -77,10 +78,21 @@ while True:
             if(getSetting("request-delay") == False and getSetting("settings")):
                 request_delay = 1
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
-            print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
-            if response == "да" and clicked == False:
-                pyautogui.doubleClick(button="left")
-                clicked = True
+            if(getSetting("ping") == False and getSetting("settings")):
+                print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
+                if response == "да" and clicked == False:
+                    pyautogui.doubleClick(button="left")
+                    clicked = True
+            else:
+                try:
+                    online = MinecraftServer.lookup("2b2t.org").status().players.online
+                    print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):",
+                          online, "(" + str(requests_counter) + ")")
+                    if response == "да" and clicked == False:
+                        pyautogui.doubleClick(button="left")
+                        clicked = True
+                except:
+                    print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
         elif jew_int == 1:
             print("jew trick сейчас невозможен (" + str(requests_counter) + ")")
             clicked = False

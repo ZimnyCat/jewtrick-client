@@ -3,7 +3,7 @@
 
 ## Установка и запуск
 
-.exe (только Windows): https://jewtrick.ml/JewTrick.exe
+.exe (только Windows): [тык](https://github.com/ZimnyCat/jewtrick-client/archive/2.0.zip)
 
 .py:
 
@@ -11,6 +11,6 @@
 
 4. Установите Python на https://www.python.org/downloads/
 
-3. Установите модули requests и pyautogui через команду pip install <модуль>
+3. Установите модули requests, pyautogui и mcstatus через команду pip install <модуль>
 
 4. Запустите, всё должно работать

@@ -6,6 +6,7 @@ import pyautogui
 requests_counter = 0
 clicked = False
 global response
+settings = ["settings", "autoclick", "ping", "request-delay"]
 
 def getSetting(settingName):
     try:
@@ -44,21 +45,21 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.1-beta\nhttps://jewtrick.ml")
+print("jew trick (client) v2.1\nhttps://jewtrick.ml")
 print("")
-motd = requests.get("https://jewtrick.ml/server/motdv20.html")
+motd = requests.get("https://jewtrick.ml/server/motdv21.html")
 if motd.status_code == 200:
-    print(motd.text)
-print("")
+    print(motd.text + "\n")
+for word in settings:
+    getSetting(word)
 if(getSetting("settings") == False):
-    print("Вы можете настроить jew trick в файле settings.txt!")
-    print("")
+    print("Вы можете настроить jew trick в файле settings.txt\n")
 if(getSetting("autoclick") and getSetting("settings")):
     response = "да"
-    print("AutoClick установлен на " + response)
+    print("AutoClick установлен на " + response + "\n")
 elif(getSetting("settings") and getSetting("autoclick") == False):
     response = "нет"
-    print("AutoClick установлен на " + response)
+    print("AutoClick установлен на " + response + "\n")
 else:
     print("Включить AutoClick?")
     print("Эта функция сделает двойной клик мышкой, когда придёт время заходить на 2b2t.\nВы можете просто навести курсор мыши на 2b2t в списке серверов и ждать.\nНапишите 'да' или 'нет'")

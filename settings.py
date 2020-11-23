@@ -1,4 +1,4 @@
-settings_list = ["settings", "autoclick", "ping", "request-delay"]
+settings_list = ["settings", "autoclick", "ping", "request-delay", "notifier"]
 
 def getSetting(settingName):
     if not (settingName in settings_list):
@@ -12,7 +12,7 @@ def getSetting(settingName):
                 return getValue(word.lower(), settingName)
         global val
         print("[ОШИБКА] Не удалось найти значение \"" + settingName + "\"! Создаём...")
-        if(settingName == "request-delay" or settingName == "ping"):
+        if(settingName == "request-delay" or settingName == "ping" or settingName == "notifier"):
             file.write(settingName + " = true\n")
             val = True
         else:

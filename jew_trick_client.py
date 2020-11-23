@@ -3,6 +3,7 @@ from mcstatus import MinecraftServer
 import requests
 import pyautogui
 import settings
+import plyer
 
 requests_counter = 0
 clicked = False
@@ -47,6 +48,10 @@ while True:
                 request_delay = 1
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
             if(settings.getSetting("ping") == False and settings.getSetting("settings")):
+            	if(settings.getSetting("notifier") == true settings.getSetting("settings")):
+            		plyer.notification.notify(message='JEW TRICK TIME!!!',
+    				app_name='JEWTRICK',
+   					title='Онлайн 2b2t: ' + str(jew_online))
                 print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
                 if response == "да" and clicked == False:
                     pyautogui.doubleClick(button="left")
@@ -54,6 +59,10 @@ while True:
             else:
                 try:
                     online = MinecraftServer.lookup("2b2t.org").status().players.online
+                    if(settings.getSetting("notifier") == true settings.getSetting("settings")):
+            			plyer.notification.notify(message='JEW TRICK TIME!!!',
+    					app_name='JEWTRICK',
+   						title='Онлайн 2b2t: ' + str(jew_online))
                     print("JEW TRICK TIME!!! Онлайн 2b2t (сервер jew trick):", jew_online, "Онлайн 2b2t (запрос):",
                           online, "(" + str(requests_counter) + ")")
                     if response == "да" and clicked == False:

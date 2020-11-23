@@ -9,7 +9,7 @@
 
 .py:
 
-1. Скачайте .py файл: [стабильная версия](https://github.com/ZimnyCat/jewtrick-client/archive/v1.3.zip) или [бета](https://github.com/ZimnyCat/jewtrick-client/archive/master.zip)
+1. Скачайте .py файл: [стабильная версия](https://github.com/ZimnyCat/jewtrick-client/archive/2.1.zip) или [бета](https://github.com/ZimnyCat/jewtrick-client/archive/master.zip)
 
 4. Установите Python на https://www.python.org/downloads/
 

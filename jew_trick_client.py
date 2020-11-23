@@ -2,44 +2,11 @@ from time import sleep
 from mcstatus import MinecraftServer
 import requests
 import pyautogui
+import settings
 
 requests_counter = 0
 clicked = False
 global response
-settings = ["settings", "autoclick", "ping", "request-delay"]
-
-def getSetting(settingName):
-    try:
-        file = open("settings.txt", "r+")
-        for word in file:
-            if(word.startswith(settingName)):
-                file.close()
-                return getValue(word.lower(), settingName)
-        global val
-        print("[ОШИБКА] Не удалось найти значение \"" + settingName + "\"! Создаём...")
-        if(settingName == "request-delay" or settingName == "ping"):
-            file.write(settingName + " = true\n")
-            val = True
-        else:
-            file.write(settingName + " = false\n")
-            val = False
-        file.close()
-        return val
-    except:
-        print("[ОШИБКА] Не удалось найти settings.txt! Создаём...")
-        file = open("settings.txt", "w")
-        file.write("https://github.com/ZimnyCat/jewtrick-client/wiki/JEW-TRICK-WIKI\n")
-        file.close()
-        return False
-
-def getValue(word, setting):
-    global result
-    result = False
-    if(word == setting + " = true\n"):
-        result = True
-    if (word == setting + " = false\n"):
-        result = False
-    return result
 
 print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
@@ -50,14 +17,14 @@ print("")
 motd = requests.get("https://jewtrick.ml/server/motdv21.html")
 if motd.status_code == 200:
     print(motd.text + "\n")
-for word in settings:
-    getSetting(word)
-if(getSetting("settings") == False):
+for word in settings.settings_list:
+    settings.getSetting(word)
+if(settings.getSetting("settings") == False):
     print("Вы можете настроить jew trick в файле settings.txt\n")
-if(getSetting("autoclick") and getSetting("settings")):
+if(settings.getSetting("autoclick") and settings.getSetting("settings")):
     response = "да"
     print("AutoClick установлен на " + response + "\n")
-elif(getSetting("settings") and getSetting("autoclick") == False):
+elif(settings.getSetting("settings") and settings.getSetting("autoclick") == False):
     response = "нет"
     print("AutoClick установлен на " + response + "\n")
 else:
@@ -76,10 +43,10 @@ while True:
         jew_int = int(requests.get("https://jewtrick.ml/server/jewtrickstatus.html").text)
         if jew_int == 2:
             request_delay = 2
-            if(getSetting("request-delay") == False and getSetting("settings")):
+            if(settings.getSetting("request-delay") == False and settings.getSetting("settings")):
                 request_delay = 1
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
-            if(getSetting("ping") == False and getSetting("settings")):
+            if(settings.getSetting("ping") == False and settings.getSetting("settings")):
                 print("JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
                 if response == "да" and clicked == False:
                     pyautogui.doubleClick(button="left")

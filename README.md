@@ -9,10 +9,10 @@
 
 .py:
 
-1. Скачайте .py файл: [стабильная версия](https://github.com/ZimnyCat/jewtrick-client/archive/2.1.zip) или [бета](https://github.com/ZimnyCat/jewtrick-client/archive/master.zip)
+1. Скачайте .py файл jew trick: [стабильная версия](https://github.com/ZimnyCat/jewtrick-client/archive/2.1.zip) или [бета](https://github.com/ZimnyCat/jewtrick-client/archive/master.zip)
 
 4. Установите Python на https://www.python.org/downloads/
 
-3. Установите модули requests, pyautogui и mcstatus через команду pip install <модуль>
+3. Установите модули requests, pyautogui и mcstatus через команду "pip install <модуль>" в терминале
 
-4. Запустите, всё должно работать
+4. Запустите jew trick, всё должно работать

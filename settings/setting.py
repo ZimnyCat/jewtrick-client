@@ -1,6 +1,7 @@
 import settings.utils as utils
 
 booleanArray = ["autoclick", "ping", "request-delay", "time"]
+numArray = ["request-delay-time", "default-request-delay-time"]
 
 
 def getBoolean(settingName):

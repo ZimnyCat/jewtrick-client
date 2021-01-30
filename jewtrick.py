@@ -34,18 +34,20 @@ if motd.status_code == 200:
     print(motd.text + "\n")
 for word in s.booleanArray:
     print(word, "=", s.getBoolean(word))
+for word in s.numArray:
+    print(word, "=", s.getNum(word))
 print("")
 while True:
     global request_delay
     requests_counter += 1
     try:
-        request_delay = 1
+        request_delay = s.getNum("default-request-delay-time")
         time = _time()
         jt_status = int(requests.get("https://jewtrick.ml/server/jewtrickstatus.html").text)
 
         if jt_status == 2:
             if s.getBoolean("request-delay"):
-                request_delay = 2
+                request_delay = s.getNum("request-delay-time")
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
             if not s.getBoolean("ping"):
                 print(time + "JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)

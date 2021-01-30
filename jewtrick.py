@@ -72,8 +72,10 @@ while True:
             offline += 1
     except ConnectionError:
         print(time + "Сервер jew trick недоступен (" + str(requests_counter) + ")")
+        offline = 0
     except:
         print(time + "Сервер jew trick получает онлайн 2b2t (" + str(requests_counter) + ")")
+        offline = 0
     if s.getBoolean("win10-notify") and offline == s.getNum("win10-notify-trigger"):
-        toast.show_toast("Jew Trick", "2b2t оффлайн дольше " + str(s.getNum("win10-notify-trigger")) + " запросов", duration=20)
+        toast.show_toast("Jew Trick", "2b2t оффлайн дольше " + str(s.getNum("win10-notify-trigger")) + " запросов", duration=0)
     sleep(request_delay)

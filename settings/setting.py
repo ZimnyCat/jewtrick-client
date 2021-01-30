@@ -1,6 +1,6 @@
 import settings.utils as utils
 
-booleanArray = ["autoclick", "ping", "request-delay"]
+booleanArray = ["autoclick", "ping", "request-delay", "time"]
 
 
 def getBoolean(settingName):

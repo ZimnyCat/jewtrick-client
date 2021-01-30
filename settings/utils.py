@@ -1,10 +1,10 @@
 import settings.setting as s
+from datetime import datetime
 
 
 def check(settingName):
     if settingName not in s.numArray and settingName not in s.booleanArray:
-        print(f"[ОШИБКА] Значение \"{settingName}\" не найдено в setting.numArray или в setting.booleanArray!")
-        return True
+        crash(f"Значение \"{settingName}\" не найдено в setting.numArray или в setting.booleanArray!")
 
 
 def createSettingsFile():
@@ -17,3 +17,10 @@ def createSettingsFile():
     file.close()
     print("Вы можете настроить jew trick в settings.txt")
     return False
+
+
+def crash(reason):
+    file = open(str("crash-" + datetime.today().strftime("%Y-%m-%d-%H-%M-%S") + ".txt"), "w")
+    file.write("[ОШИБКА] " + reason + "\nОтправьте эту ошибку разработчику, от которого вы получили эту версию jew trick")
+    file.close()
+    exit(1)

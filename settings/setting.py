@@ -1,7 +1,7 @@
 import settings.utils as utils
 
-booleanArray = ["autoclick", "ping", "request-delay", "time"]
-numArray = ["request-delay-time", "default-request-delay-time"]
+booleanArray = ["autoclick", "ping", "time"]
+numArray = ["delay"]
 
 
 def getBoolean(settingName):
@@ -20,14 +20,13 @@ def getBoolean(settingName):
                 elif word == nigga + "false\n":
                     return False
                 # если значение не булевое
-                print("[ОШИБКА] Настрйка \"" + settingName + "\" не соответствует true или false")
-                return False
+                utils.crash("Настрйка \"" + settingName + "\" не соответствует true или false")
         # если такая настройка не найдена в файле
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
         file.write(settingName + " = false\n")
         file.close()
         return False
-    except:
+    except FileNotFoundError:
         # если файла settings.txt нет
         utils.createSettingsFile()
         return False
@@ -48,12 +47,11 @@ def getNum(settingName):
                 except:
                     # если значение не число
                     utils.crash("Настрйка \"" + settingName + "\" не является числом")
-                    return -1
         # если такая настройка не найдена
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
-        file.write(settingName + " = 0\n")
+        file.write(settingName + " = 1\n")
         file.close()
-        return 0
+        return 1
     except:
         # если файла settings.txt нет
         utils.createSettingsFile()

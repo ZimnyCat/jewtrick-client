@@ -28,7 +28,6 @@ print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
 print("jew trick (client) v2.2-beta\nhttps://jewtrick.ml\n\n")
-print("")
 motd = requests.get("https://jewtrick.ml/server/motdv21.html")
 if motd.status_code == 200:
     print(motd.text + "\n")
@@ -41,13 +40,12 @@ while True:
     global request_delay
     requests_counter += 1
     try:
-        request_delay = s.getNum("default-request-delay-time")
+        request_delay = s.getNum("delay")
         time = _time()
         jt_status = int(requests.get("https://jewtrick.ml/server/jewtrickstatus.html").text)
 
         if jt_status == 2:
-            if s.getBoolean("request-delay"):
-                request_delay = s.getNum("request-delay-time")
+            request_delay += 1
             jew_online = requests.get("https://jewtrick.ml/server/jew_online.html").text
             if not s.getBoolean("ping"):
                 print(time + "JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
@@ -65,7 +63,7 @@ while True:
             clicked = False
         elif jt_status == 0:
             print(time + "2b2t не отвечает (" + str(requests_counter) + ")")
-    except:
+    except ConnectionError:
         if requests.get("https://jewtrick.ml/server/jewtrickstatus.html").status_code == 200:
             print(time + "Сервер jew trick получает онлайн 2b2t (" + str(requests_counter) + ")")
         else:

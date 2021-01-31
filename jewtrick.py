@@ -1,3 +1,5 @@
+print("Загрузка...\n")
+
 from time import sleep
 from mcstatus import MinecraftServer
 import requests
@@ -42,9 +44,9 @@ print("")
 while True:
     global request_delay
     requests_counter += 1
+    time = _time()
     try:
         request_delay = s.getNum("delay")
-        time = _time()
         jt_status = int(requests.get("https://jewtrick.ml/server/jewtrickstatus.html").text)
 
         if jt_status == 2:
@@ -61,10 +63,10 @@ while True:
                           online, "(" + str(requests_counter) + ")")
                     clicked = _click(clicked)
                 except:
-                    print(time + "jew trick сейчас невозможен (" + str(requests_counter) + ")")
+                    print(time + "Вход без очереди сейчас невозможен (" + str(requests_counter) + ")")
             offline = 0
         elif jt_status == 1:
-            print(time + "jew trick сейчас невозможен (" + str(requests_counter) + ")")
+            print(time + "Вход без очереди сейчас невозможен (" + str(requests_counter) + ")")
             offline = 0
             clicked = False
         elif jt_status == 0:

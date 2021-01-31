@@ -1,7 +1,7 @@
 import settings.utils as utils
 
-booleanArray = ["autoclick", "ping", "time", "win10-notify"]
-numArray = ["delay", "win10-notify-trigger"]
+booleanArray = ["autoclick", "ping", "time"]
+numArray = ["delay"]
 
 
 def getBoolean(settingName):

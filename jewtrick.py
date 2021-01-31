@@ -6,11 +6,8 @@ import requests
 import pyautogui
 import settings.setting as s
 from datetime import datetime
-from win10toast import ToastNotifier as tn
 
-toast = tn()
 requests_counter = 0
-offline = 0
 clicked = False
 
 
@@ -32,7 +29,7 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.2-beta\nhttps://jewtrick.ml\n\n")
+print("jew trick (client) v2.2\nhttps://jewtrick.xyz/\n")
 motd = requests.get("https://jewtrick.ml/server/motdv21.html")
 if motd.status_code == 200:
     print(motd.text + "\n")
@@ -64,20 +61,13 @@ while True:
                     clicked = _click(clicked)
                 except:
                     print(time + "Вход без очереди сейчас невозможен (" + str(requests_counter) + ")")
-            offline = 0
         elif jt_status == 1:
             print(time + "Вход без очереди сейчас невозможен (" + str(requests_counter) + ")")
-            offline = 0
             clicked = False
         elif jt_status == 0:
             print(time + "2b2t не отвечает (" + str(requests_counter) + ")")
-            offline += 1
     except ConnectionError:
         print(time + "Сервер jew trick недоступен (" + str(requests_counter) + ")")
-        offline = 0
     except:
         print(time + "Сервер jew trick получает онлайн 2b2t (" + str(requests_counter) + ")")
-        offline = 0
-    if s.getBoolean("win10-notify") and offline == s.getNum("win10-notify-trigger"):
-        toast.show_toast("Jew Trick", "2b2t оффлайн дольше " + str(s.getNum("win10-notify-trigger")) + " запросов", duration=0)
     sleep(request_delay)

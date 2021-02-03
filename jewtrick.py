@@ -1,5 +1,7 @@
 print("Загрузка...\n")
 
+ver = "2.2"
+
 from time import sleep
 from mcstatus import MinecraftServer
 import requests
@@ -29,10 +31,14 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) v2.2\nhttps://jewtrick.xyz/\n")
-motd = requests.get("https://server.jewtrick.xyz/motdv21.html")
-if motd.status_code == 200:
-    print(motd.text + "\n")
+print("jew trick (client) " + ver + "\nhttps://jewtrick.xyz/\n")
+lastver = requests.get("https://server.jewtrick.xyz/lastversion.html").text
+if lastver == ver:
+    motd = requests.get("https://server.jewtrick.xyz/motdv21.html")
+    if motd.status_code == 200:
+        print(motd.text + "\n")
+else:
+    print("Обновитесь до новейшей версии jew trick " + lastver + " на https://jewtrick.xyz/")
 for word in s.booleanArray:
     print(word, "=", s.getBoolean(word))
 for word in s.numArray:

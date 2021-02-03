@@ -32,9 +32,9 @@ print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
 print("jew trick (client) " + ver + "\nhttps://jewtrick.xyz/\n")
-lastver = requests.get("https://server.jewtrick.xyz/lastversion.html").text
+lastver = requests.get("http://server.jewtrick.xyz/lastversion.html").text
 if lastver == ver:
-    motd = requests.get("https://server.jewtrick.xyz/motdv21.html")
+    motd = requests.get("http://server.jewtrick.xyz/motdv21.html")
     if motd.status_code == 200:
         print(motd.text + "\n")
 else:
@@ -50,11 +50,11 @@ while True:
     time = _time()
     try:
         request_delay = s.getNum("delay")
-        jt_status = int(requests.get("https://server.jewtrick.xyz/jewtrickstatus.html").text)
+        jt_status = int(requests.get("http://server.jewtrick.xyz/jewtrickstatus.html").text)
 
         if jt_status == 2:
             request_delay += 1
-            jew_online = requests.get("https://server.jewtrick.xyz/jew_online.html").text
+            jew_online = requests.get("http://server.jewtrick.xyz/jew_online.html").text
             if not s.getBoolean("ping"):
                 print(time + "JEW TRICK TIME!!! Онлайн 2b2t:", jew_online)
                 clicked = _click(clicked)

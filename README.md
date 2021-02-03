@@ -5,8 +5,6 @@
 
 ## Установка и запуск
 
-.exe (только Windows): [тык](https://github.com/ZimnyCat/jewtrick-client/releases/download/2.1/JewTrick.exe)
+.exe (только Windows): [тык](https://github.com/ZimnyCat/jewtrick-client/releases/download/2.2/jewtrick.exe)
 
-.py:
-
-будет позже (сами додумайтесь)
+.py: [тык](https://github.com/ZimnyCat/jewtrick-client/releases/download/2.2/jewtrick-py.zip)

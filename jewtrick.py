@@ -34,7 +34,7 @@ print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
 print("jew trick (client) " + ver + "\nhttps://jewtrick.xyz/\n")
 lastver = requests.get("http://server.jewtrick.xyz/lastversion.html").text
 if lastver == ver:
-    motd = requests.get("http://server.jewtrick.xyz/motdv21.html")
+    motd = requests.get("http://server.jewtrick.xyz/motdv22.html")
     if motd.status_code == 200:
         print(motd.text + "\n")
 else:

@@ -1,4 +1,5 @@
-import settings.utils as utils
+import utils.settingsHelper as helper
+import utils.system as sys
 
 booleanArray = ["autoclick", "ping", "time"]
 numArray = ["delay"]
@@ -6,7 +7,7 @@ numArray = ["delay"]
 
 def getBoolean(settingName):
     # проверяем
-    if utils.check(settingName):
+    if helper.check(settingName):
         return False
     try:
         file = open("settings.txt", "r+")
@@ -20,7 +21,8 @@ def getBoolean(settingName):
                 elif word == nigga + "false\n":
                     return False
                 # если значение не булевое
-                utils.crash("Настрйка \"" + settingName + "\" не соответствует true или false")
+                sys.crash("Настройка \"" + settingName + "\" не соответствует true или false",
+                          "Проверьте ваш файл settings.txt")
         # если такая настройка не найдена в файле
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
         file.write(settingName + " = false\n")
@@ -28,13 +30,13 @@ def getBoolean(settingName):
         return False
     except FileNotFoundError:
         # если файла settings.txt нет
-        utils.createSettingsFile()
+        helper.createSettingsFile()
         return False
 
 
 def getNum(settingName):
     # проверяем
-    utils.check(settingName)
+    helper.check(settingName)
     try:
         file = open("settings.txt", "r+")
         # ищем настройку
@@ -46,7 +48,7 @@ def getNum(settingName):
                     return int(word.replace(nigga, ""))
                 except:
                     # если значение не число
-                    utils.crash("Настрйка \"" + settingName + "\" не является числом")
+                    sys.crash("Настрйка \"" + settingName + "\" не является числом")
         # если такая настройка не найдена
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
         file.write(settingName + " = 1\n")
@@ -54,4 +56,4 @@ def getNum(settingName):
         return 1
     except:
         # если файла settings.txt нет
-        utils.createSettingsFile()
+        helper.createSettingsFile()

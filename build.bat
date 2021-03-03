@@ -1,1 +1,1 @@
-pyinstaller -D -F -i "jewtrick.ico" jewtrick.py
+pyinstaller -D -F -i "jewtrick.ico" "jewtrick/jewtrick.py"

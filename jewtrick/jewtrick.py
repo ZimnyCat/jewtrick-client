@@ -1,6 +1,6 @@
 print("Загрузка...\n")
 
-ver = "2.2-beta"
+ver = "2.3-beta"
 
 from time import sleep
 from mcstatus import MinecraftServer

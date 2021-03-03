@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 print("Загрузка...\n")
 
 ver = "2.3-beta"

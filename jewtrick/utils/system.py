@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import utils.settings as s
 from datetime import datetime
 import pyautogui

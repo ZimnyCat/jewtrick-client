@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import utils.settings as s
 import utils.system as sys
 

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import utils.settingsHelper as helper
 import utils.system as sys
 

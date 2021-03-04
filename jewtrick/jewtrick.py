@@ -46,9 +46,9 @@ while True:
                 try:
                     online = MinecraftServer.lookup("2b2t.org").status().players.online
                     sys.sendMsg("JEW TRICK TIME!!! Онлайн 2b2t (запрос): " + str(online), requests_counter)
+                    clicked = sys.click(clicked)
                 except:
-                    sys.sendMsg("JEW TRICK TIME!!! Онлайн 2b2t: " + jew_online, requests_counter)
-                clicked = sys.click(clicked)
+                    sys.sendMsg("Вход без очереди сейчас невозможен", requests_counter)
         elif jt_status == 1:
             sys.sendMsg("Вход без очереди сейчас невозможен", requests_counter)
             clicked = False

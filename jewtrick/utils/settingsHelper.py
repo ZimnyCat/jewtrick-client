@@ -14,9 +14,9 @@ def createSettingsFile():
     file = open("settings.txt", "w")
     file.write("https://github.com/ZimnyCat/jewtrick-client/wiki/JEW-TRICK-WIKI\n")
     for word in s.booleanArray:
-        file.write(word + " = false\n")
+        file.write(word + " = " + s.booleanArray[word] + "\n")
     for word in s.numArray:
-        file.write(word + " = 1\n")
+        file.write(word + " = " + str(s.numArray[word]) + "\n")
     file.close()
     print("Вы можете настроить jew trick в settings.txt")
     return False

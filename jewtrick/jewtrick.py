@@ -37,7 +37,6 @@ while True:
         request_delay = s.getNum("delay")
         jt_status = int(requests.get("http://server.jewtrick.xyz/jewtrickstatus.html").text)
         if jt_status == 2:
-            request_delay += 1
             jew_online = requests.get("http://server.jewtrick.xyz/jew_online.html").text
             if not s.getBoolean("ping"):
                 sys.sendMsg("JEW TRICK TIME!!! Онлайн 2b2t: " + jew_online, requests_counter)
@@ -47,6 +46,7 @@ while True:
                     online = MinecraftServer.lookup("2b2t.org").status().players.online
                     sys.sendMsg("JEW TRICK TIME!!! Онлайн 2b2t (запрос): " + str(online), requests_counter)
                     clicked = sys.click(clicked)
+                    request_delay = s.getNum("ping-delay")
                 except:
                     sys.sendMsg("Вход без очереди сейчас невозможен", requests_counter)
         elif jt_status == 1:

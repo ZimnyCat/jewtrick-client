@@ -6,7 +6,12 @@ import pyautogui
 
 
 def sendMsg(text, rc):
-    print(_time() + text + " (" + str(rc) + ")")
+    global rcounter
+    if s.getBoolean("requests-counter"):
+        rcounter = " (" + str(rc) + ")"
+    else:
+        rcounter = ""
+    print(_time() + text + rcounter)
 
 
 def _time():

@@ -3,8 +3,17 @@
 import utils.settingsHelper as helper
 import utils.system as sys
 
-booleanArray = ["autoclick", "ping", "time"]
-numArray = ["delay"]
+booleanArray = {
+    "autoclick": "false",
+    "ping": "true",
+    "time": "false",
+    "requests-counter": "true"
+}
+
+numArray = {
+    "delay": 1,
+    "ping-delay": 5
+}
 
 
 def getBoolean(settingName):
@@ -27,13 +36,13 @@ def getBoolean(settingName):
                           "Проверьте ваш файл settings.txt")
         # если такая настройка не найдена в файле
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
-        file.write(settingName + " = false\n")
+        file.write(settingName + " = " + booleanArray[settingName] + "\n")
         file.close()
-        return False
+        return getBoolean(settingName)
     except FileNotFoundError:
         # если файла settings.txt нет
         helper.createSettingsFile()
-        return False
+        return getBoolean(settingName)
 
 
 def getNum(settingName):
@@ -53,9 +62,10 @@ def getNum(settingName):
                     sys.crash("Настрйка \"" + settingName + "\" не является числом")
         # если такая настройка не найдена
         print("Не удалось найти значение \"" + settingName + "\"! Записываем...")
-        file.write(settingName + " = 1\n")
+        file.write(settingName + " = " + str(numArray[settingName]) + "\n")
         file.close()
-        return 1
+        return getNum(settingName)
     except:
         # если файла settings.txt нет
         helper.createSettingsFile()
+        return getNum(settingName)

@@ -35,7 +35,8 @@ for word in s.booleanArray:
     print(word, "=", s.getBoolean(word))
 for word in s.numArray:
     print(word, "=", s.getNum(word))
-print("")
+
+print("\nВы можете пожертвовать на https://jewtrick.xyz/donate/\n")
 while True:
     global request_delay
     requests_counter += 1

@@ -17,14 +17,20 @@ print("─╔╦═╦╦═╦╗╔══╦═╦══╦═╦╦╗")
 print("─║║╦╣║║║║╚╗╔╣╬╠║║╣╔╣╔╝")
 print("╔╣║╩╣║║║║─║║║╗╬║║╣╚╣╚╗")
 print("╚═╩═╩═╩═╝─╚╝╚╩╩══╩═╩╩╝")
-print("jew trick (client) " + ver + "\nhttps://jewtrick.xyz/\n")
-lastver = requests.get("http://server.jewtrick.xyz/lastversion.html").text
-if lastver == ver:
-    motd = requests.get("http://server.jewtrick.xyz/motdv22.html")
-    if motd.status_code == 200:
-        print(motd.text + "\n")
-else:
-    print("Обновитесь до новейшей версии jew trick " + lastver + " на https://jewtrick.xyz/")
+print("jew trick (client) " + ver + "\nhttps://jewtrick.xyz/")
+
+try:
+    lastver = requests.get("http://server.jewtrick.xyz/lastversion.html").text
+    if lastver == ver:
+        motd = requests.get("http://server.jewtrick.xyz/motd.html")
+        if motd.status_code == 200:
+            motd.encoding = "utf-8"
+            print(motd.text.replace("<meta charset=\"utf-8\">", "") + "\n")
+    else:
+        print("\nОбновитесь до новейшей версии jew trick " + lastver + " на https://jewtrick.xyz/\n")
+except:
+    print()
+
 for word in s.booleanArray:
     print(word, "=", s.getBoolean(word))
 for word in s.numArray:

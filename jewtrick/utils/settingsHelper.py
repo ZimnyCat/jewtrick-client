@@ -12,7 +12,7 @@ def check(settingName):
 
 def createSettingsFile():
     file = open("settings.txt", "w")
-    file.write("https://github.com/ZimnyCat/jewtrick-client/wiki/JEW-TRICK-WIKI\n")
+    file.write("https://jewtrick.xyz/settings\n\n")
     for word in s.booleanArray:
         file.write(word + " = " + s.booleanArray[word] + "\n")
     for word in s.numArray:

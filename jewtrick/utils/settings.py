@@ -18,8 +18,7 @@ numArray = {
 
 def getBoolean(settingName):
     # проверяем
-    if helper.check(settingName):
-        return False
+    helper.check(settingName)
     try:
         file = open("settings.txt", "r+")
         # ищем настройку
